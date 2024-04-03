@@ -61,6 +61,7 @@ def Main(argv: list[str], romWriter: Optional[RomWriter] = None) -> None:
     write_spoiler_file(game, rom_name)
 
 def generate(options: GameOptions) -> Game:
+    print("started generate with options ",options)
     logicChoice = "E"
     fillChoice = "D"
     areaA = ""
@@ -68,8 +69,9 @@ def generate(options: GameOptions) -> Game:
     seeeed = random.randint(0, 9999999)
     random.seed(seeeed)
 
-
+    
     csvdict = pullCSV()
+    print("pulled csv")
     locArray = list(csvdict.values())
     
     seedComplete = False

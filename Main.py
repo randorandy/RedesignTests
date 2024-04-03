@@ -56,7 +56,8 @@ fillers: dict[str, Type[FillAlgorithm]] = {
 
 # main program
 def Main(argv: list[str], romWriter: Optional[RomWriter] = None) -> None:
-    game = generate()
+    options = GameOptions(True)
+    game = generate(options)
     rom_name = write_rom(game)
     write_spoiler_file(game, rom_name)
 
@@ -78,14 +79,13 @@ def generate(options: GameOptions) -> Game:
     randomizeAttempts = 0
     game = Game(Expert,
                 csvdict,
-                options["visibility"],
+                options.visibility,
                 VanillaAreas(),
                 seeeed)
-    print("Just so you know, visibility is set to ",options["visibility"])
+    print("Just so you know, visibility is set to ",options.visibility)
     while not seedComplete :
-        if game.area_rando:  # area rando
-            game.connections = areaRando.RandomizeAreas()
-            # print(Connections) #test
+        
+        
         randomizeAttempts += 1
         if randomizeAttempts > 10:
             print("Giving up after 10 attempts. Help?")
@@ -156,7 +156,7 @@ def write_rom(game: Game, romWriter: Optional[RomWriter] = None) -> str:
         romWriter.setBaseFilename(rom1_path[:-4].split("/")[-1])
 
     for loc in game.all_locations.values():
-        write_location(romWriter, loc, game["visibility"])
+        write_location(romWriter, loc, game.visibility)
     
     # Morph Ball Fix
     #romWriter.writeBytes(0x268ce, b"\x04")

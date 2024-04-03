@@ -62,7 +62,7 @@ def Main(argv: list[str], romWriter: Optional[RomWriter] = None) -> None:
     write_spoiler_file(game, rom_name)
 
 def generate(options: GameOptions) -> Game:
-    print("started generate with options ",options)
+    #print("started generate with options ",options)
     logicChoice = "E"
     fillChoice = "D"
     areaA = ""
@@ -72,7 +72,7 @@ def generate(options: GameOptions) -> Game:
 
     
     csvdict = pullCSV()
-    print("pulled csv")
+    #print("pulled csv")
     locArray = list(csvdict.values())
     
     seedComplete = False
@@ -82,7 +82,7 @@ def generate(options: GameOptions) -> Game:
                 options.visibility,
                 VanillaAreas(),
                 seeeed)
-    print("Just so you know, visibility is set to ",options.visibility)
+    #print("Just so you know, visibility is set to ",options.visibility)
     while not seedComplete :
         
         

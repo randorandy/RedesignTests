@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Undesign Rando (for Super Metroid Redesign)</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <script src='index.js'></script>
+</head>
+<body>
+    <div>
+        Before you begin, you can apply this IPS patch to your Redesign rom. This applies vanilla SM physics, gives starting walljump, and skips Ceres!<br>
+        Or don't! Game should still be beatable in Redesign or Undesign.<br>
+        <a href="https://github.com/randorandy/RedesignRando/raw/main/Super_Metroid_Undesign_1.1.IPS">Super_Metroid_Undesign_1.1.IPS</a><br>
+        If you wish, apply this IPS patch before or after you roll to get shortened fanfares (thanks to neen):<br>
+        <a href="https://github.com/randorandy/UndesignRando/raw/main/shortmessageboxes_ver3.ips">shortmessageboxes_ver3.ips</a><br>
+    </div>
+
+    https://github.com/randorandy/RedesignRando/raw/main/shortmessageboxes.ips
+    <div>
+        <label for="rom">Undesign or Redesign rom</label>
+        <input type="file" id="rom" name="rom" accept=".sfc, .smc" />
+    </div>
+    <div>
+        <input type="checkbox" id="visibility" checked="true"/>
+        <label for="visibility"
+               title="Make all items appear OPEN, with no items in a chozo or hidden. Does not affect logic."
+        >All Items OPEN Visibility (disable to have chozo orb and hidden items)</label>
+    </div>
+    <div>
+        <button id="roll-button">roll</button><br /><span>Generation can take up to 90 seconds, and your browser might stop responding.</span>
+    </div>
+    <div id="status"></div>
+    <py-config>
+        [[fetch]]
+        files = ["areaRando.py", "connection_data.py", "door_logic.py",
+                 "fillAssumed.py", "fillInterface.py",
+                 "item_data.py", "game.py", "loadout.py", "location_data.py",
+                 "logicCommon.py", "logicInterface.py", "logic_shortcut.py", 
+                 "logic_updater.py", "romWriter.py", "solver.py", 
+                 "redesigncsv.csv", "Main.py", "logicExpert.py"]
+    </py-config>
+    <py-script src="./index.py"></py-script>
+</body>
+</html>

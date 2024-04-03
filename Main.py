@@ -17,7 +17,7 @@ from romWriter import RomWriter
 from solver import solve
 
 
-def plmidFromHiddenness(itemArray, hiddenness, visible) -> bytes:
+def plmidFromHiddenness(itemArray, hiddenness, visible = True) -> bytes:
     if hiddenness == "open":
         plmid = itemArray[1]
     elif hiddenness == "chozo":
@@ -28,7 +28,7 @@ def plmidFromHiddenness(itemArray, hiddenness, visible) -> bytes:
         plmid = itemArray[1]
     return plmid
 
-def write_location(romWriter: RomWriter, location: Location, visible) -> None:
+def write_location(romWriter: RomWriter, location: Location, visible = True) -> None:
     """
     provide a location with an ['item'] value, such as Missile, Super, etc
     write all rom locations associated with the item location

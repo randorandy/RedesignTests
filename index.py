@@ -61,8 +61,8 @@ def roll2(params_str: str) -> None:
 def roll3() -> bool:
     global game
     print("roll3 initiated")
-    #assert options
-    game = generate()
+    assert options
+    game = generate(options)
     return all(not (loc["item"] is None) for loc in game.all_locations.values())
 
 
